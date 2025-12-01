@@ -37,16 +37,24 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Card className="w-full max-w-sm p-6">
+        <div className="flex items-center justify-center h-screen 
+            bg-black bg-gradient-to-b from-black via-black to-red-950/30">
+
+            <Card className="w-full max-w-sm p-6 
+                bg-white/5 border border-red-900/40 backdrop-blur-md shadow-xl rounded-xl">
+
                 <CardContent>
-                    <h1 className="text-xl font-bold mb-4">Login</h1>
+                    <h1 className="text-3xl font-bold text-white text-center mb-6">
+                        Login
+                    </h1>
 
                     <form onSubmit={handleLogin} className="space-y-4">
+
                         <Input
                             placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            className="bg-black/40 border-red-700/40 text-white"
                         />
 
                         <div className="relative">
@@ -55,36 +63,38 @@ export default function LoginPage() {
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="pr-10"
+                                className="bg-black/40 border-red-700/40 text-white pr-10"
                             />
                             <button
                                 type="button"
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                 onClick={() => setShowPassword(!showPassword)}
-                                aria-label={showPassword ? "Hide password" : "Show password"}
                             >
                                 <img
-                                    src={showPassword ? "/images/hide.png" : "/images/view.png"}
-                                    alt={showPassword ? "Hide password" : "Show password"}
-                                    className="w-5 h-5"
+                                    src={showPassword ? "/images/hidden.png" : "/images/show.png"}
+                                    className="w-5 h-5 opacity-80"
                                 />
                             </button>
                         </div>
 
-                        {error && <p className="text-red-500">{error}</p>}
+                        {error && <p className="text-red-400 text-sm">{error}</p>}
 
-                        <Button className="w-full" type="submit">
+                        <Button 
+                            className="w-full bg-red-700 hover:bg-red-800 text-white font-semibold"
+                            type="submit"
+                        >
                             Login
                         </Button>
                     </form>
 
                     <Button
                         variant="link"
-                        className="mt-2 w-full"
+                        className="mt-4 w-full text-red-400 hover:text-red-300"
                         onClick={() => router.push("/register")}
                     >
                         Create an Account
                     </Button>
+
                 </CardContent>
             </Card>
         </div>
